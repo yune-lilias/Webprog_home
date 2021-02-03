@@ -1,8 +1,6 @@
 body {
   background-image: url("53117853_p0.jpg");
-
   height: auto;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -112,4 +110,9 @@ div{
 p {
  color: #333300;
  text-align: center;
+}
+
+li span {
+ color: #FF0000;
+ font-weight: bold;
 }
