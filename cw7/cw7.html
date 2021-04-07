@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="cw7.css">
+<title>Validate</title>
+<script>
+// Defining a function to display error message
+function handleForm(event) { event.preventDefault(); } 
+
+
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+function reportErrors(errorfield){
+    var msg = "You forgot to fill in the following field(s) ";
+    var numError;
+
+    for (var i = 0; i<errorfield.length; i++) {
+        msg += (errorfield[i] + ", ");
+    }
+    alert(msg.slice(0, -2));
+}
+
+
+function checkLength(text, min, max){
+    min = min || 1;
+    max = max || 10000;
+ 
+    if (text.length < min || text.length > max) {
+        return false;
+    }
+    return true;
+}
+
+
+function validate(formname){
+	var form = document.getElementById(formname);
+    var id = form.id.value;
+    var first = form.first.value;
+    var last = form.last.value;
+    var errors = false;
+    var errorfield = [];
+    var index = 0;
+    printError("iderr", "<br>");	
+    printError("fnerr", "<br>");
+    printError("lnerr", "<br>");
+    if (!checkLength(id)) {
+        printError("iderr", "<br>Please Enter an ID");
+        errors = true;
+        errorfield.push("ID");
+    }
+    
+ 
+    if (!checkLength(first)) {
+        printError("fnerr", "<br>Please Enter Your First Name");
+        errors = true;
+        errorfield.push("FirstName");
+    }
+
+    if (!checkLength(last)) {
+        printError("lnerr", "<br>Please Enter Your Last Name");
+        errors = true;
+        errorfield.push("LastName");
+    }
+     
+
+    if (errorfield.length) {
+        reportErrors(errorfield);
+        return false;
+    }
+    dispout(id,first,last);
+    return true;
+}
+
+function dispout(id,fn,ln){
+str = "";
+str = str+ 'UserId: '+id + "<br>";
+str = str+ 'First Name: '+fn + "<br>";
+str = str+ 'Last Name: '+ln + "<br>";
+document.getElementById('output').innerHTML = str;
+document.getElementById("myForm").reset();
+}
+
+</script>
+</head>
+<body>
+<form method="post" id = 'myForm'
+                onsubmit="return false;">
+    <div class = 'error' id='iderr'><br></div>
+    <label>ID:</label> <input type="text" name="id" size="10"><br>
+    <div class = 'error' id='fnerr'><br></div>
+    <label>FirstName:</label> <input type="text" name="first" size="10"><br>
+    <div class = 'error' id='lnerr'><br></div>
+    <label>LastName:</label> <input type="text" name="last" size="10"><br><br>
+
+    <input type="button" value="Add" onclick = "validate('myForm')">
+    </p>
+</form>
+<div id='output'>
+<br>
+</div>
+</body>
+</html>

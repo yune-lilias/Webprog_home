@@ -1,0 +1,23 @@
+label {
+    display: inline-block;
+    width:70px;
+}
+
+input[type="button"] {
+    font-size: 110%;
+    font-weight: 100;
+    border-color: #016BC1;
+    box-shadow: 0 3px 5px #0165b6;
+    margin-top: 10px;
+    margin-left: 80px;
+   margin-top: 10px;
+   border-radius: 12px;
+}
+
+.error {
+    color: red;
+    font-size: 90%;
+    text-decoration: underline;
+    margin-left: 70px;
+    margin-bottom: 10px;
+}
